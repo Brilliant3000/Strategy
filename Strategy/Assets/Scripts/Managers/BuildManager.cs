@@ -10,6 +10,7 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private BuildDushBoard buildingDushBoard;
 
     private Camera mainCamera;
+
     private Building flyingBuilding;
     private Collider hitCollider;
     private GroundElement groundElement;
@@ -71,7 +72,7 @@ public class BuildManager : MonoBehaviour
         {
             groundElement.buildingHolder = flyingBuilding;
             Build();
-            groundElement.Busy = true;
+ 
         }
         else if (flyingBuilding != null)
         {
@@ -83,7 +84,7 @@ public class BuildManager : MonoBehaviour
 
     private bool CheckCost()
     {
-        if(bank.Coin >= flyingBuilding.cost)
+        if(bank.Coin >= flyingBuilding.costInCoins)
         {
             return true;
         }
@@ -97,7 +98,10 @@ public class BuildManager : MonoBehaviour
     {
         builder.StartBuilding(flyingBuilding, groundElement);
         flyingBuilding.SetDefault();
+
         buildingDushBoard.RemoveBuild();
+        flyingBuilding.gameObject.SetActive(false);
+
         flyingBuilding = null;
         BuildFinished?.Invoke();
     }

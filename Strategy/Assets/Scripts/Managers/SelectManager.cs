@@ -8,17 +8,17 @@ public class SelectManager : MonoBehaviour
     private Camera mainCamera;
     private GroundElement ground;
     private Building building;
-
+    private bool active;
+    private Collider tempGround;
 
     void Start()
     {
         mainCamera = Camera.main;
     }
 
-
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
         {
             RaycastHit hit;
 
@@ -28,11 +28,25 @@ public class SelectManager : MonoBehaviour
             {
                 if (hit.collider != null)
                 {
-                    selectDushboard.SetPosition(hit.collider.GetComponent<GroundElement>());
-                    ground = hit.collider.GetComponent<GroundElement>();
+                    if (hit.collider != tempGround || tempGround == null)
+                    {
+                        ground = hit.collider.GetComponent<GroundElement>();
+                        selectDushboard.SetPosition(ground);
 
-                    if (ground.buildingHolder != null)
-                        GetBuilding();
+                        if (ground.buildingHolder != null)
+                        {
+                            GetBuilding();
+                        }
+                        else
+                            buildingDushboard.gameObject.SetActive(false);
+                        tempGround = hit.collider;
+                    }
+                    else
+                    {
+                        buildingDushboard.gameObject.SetActive(false);
+                        selectDushboard.RemovePosition();
+                        tempGround = null;
+                    }
                 }
             }
         }
@@ -40,12 +54,6 @@ public class SelectManager : MonoBehaviour
 
     private void GetBuilding()
     {
-        building = ground.buildingHolder; 
         buildingDushboard.SetBuilding(ground);
-    }
-
-    private void GetGround()
-    {
-
     }
 }

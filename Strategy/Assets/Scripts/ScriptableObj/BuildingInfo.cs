@@ -3,12 +3,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BuildingInfo", menuName = "Assets/Scripts/ScriptableBuilding")]
 public class BuildingInfo : ScriptableObject
 {
-    [SerializeField] private string _name;
-    [SerializeField] private Sprite _icon;
+     public string _name => _name;
+     public Sprite _icon => _icon;
 
-    [SerializeField] private int _costInCoins;
-    [SerializeField] private int _costInWood;
-    [SerializeField] private int _costInStone;
-
-    [SerializeField] private float _constructionTime;
+     public int _costInCoins => _costInCoins;
+     public int _costInWood => _costInWood;
+     public int _costInStone => _costInStone;
+        
+     public float _constructionTime => _constructionTime;
+     public float _destroyTime => _destroyTime;
 }

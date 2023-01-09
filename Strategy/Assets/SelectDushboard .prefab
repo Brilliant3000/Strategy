@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2486670366845710785}
   - component: {fileID: 2486670366845710786}
   - component: {fileID: 2486670366845710787}
+  - component: {fileID: 3567715710266209777}
   m_Layer: 0
   m_Name: 'SelectDushboard '
   m_TagString: Untagged
@@ -83,7 +84,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2486670366845710787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +102,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3567715710266209777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2486670366845710813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256638debf797e844a3a050e158f0962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2944892287101105523
 GameObject:
   m_ObjectHideFlags: 0

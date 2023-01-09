@@ -1,20 +1,27 @@
+
 using UnityEngine;
 using System;
+using System.Collections;
 
 public class Destroyer : MonoBehaviour
 {
+    private int timeDestroy;
     private Bank bank;
     private Building building;
     public Action OnDestroy;
+    public BuildingProgressBar buildingProgressBar;
 
     private void Start()
     {
         bank = GetComponent<Bank>();
     }
+
     public void StartDestroy(GroundElement ground)
     {
-       this.building = ground.buildingHolder;
-        DestroyBuilding();
+        building = ground.buildingHolder;
+        timeDestroy = building.timeDestroy;
+        buildingProgressBar.Active(building, timeDestroy);
+        StartCoroutine(ColldownDestroy());
         ground.Busy = false;
     }
 
@@ -23,11 +30,17 @@ public class Destroyer : MonoBehaviour
         if(building != null)
             Destroy(building.gameObject);
         OnDestroy?.Invoke();
-        
     }
 
     private void ReturnResurses()
     {
-        
+        bank.ReturnResources(building);
+    }
+
+    IEnumerator ColldownDestroy()
+    {
+        yield return new WaitForSeconds(timeDestroy);
+        DestroyBuilding();
+        ReturnResurses();
     }
 }

@@ -24,7 +24,7 @@ public class BuildingDushboard : MonoBehaviour
 
         if(building != null )
             transform.position = new Vector3(building.transform.position.x, 
-                building.transform.position.y + 0.5f, building.transform.position.z + 0.5f);
+                building.transform.position.y + 0.8f, building.transform.position.z + 0.5f);
     }
 
     private void Destroy()

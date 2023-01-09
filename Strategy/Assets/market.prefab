@@ -132,6 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66529e0a0ff622c4cbf7088d874ecacd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 50
+  costInCoins: 20
+  costInWood: 20
+  costInStone: 20
+  timeBuilding: 5
+  timeDestroy: 5
   size: {x: 1, y: 1}
   mesh: {fileID: 8629715554128959134}

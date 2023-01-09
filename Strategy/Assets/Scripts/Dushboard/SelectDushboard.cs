@@ -13,4 +13,10 @@ public class SelectDushboard : MonoBehaviour
         ground.transform.position.y + 0.55f, ground.transform.position.z);
     }
 
+    public void RemovePosition()
+    {
+        ground = null;
+        gameObject.SetActive(false);
+    }
+
 }

@@ -240,7 +240,7 @@ MonoBehaviour:
   upgradeButton: {fileID: 2902411344702935389}
   destroyButton: {fileID: 83850728674373110}
   getInfoButton: {fileID: 5449462936935377436}
-  desroyer: {fileID: 0}
+  destroyer: {fileID: 0}
 --- !u!1 &8333928838496026153
 GameObject:
   m_ObjectHideFlags: 0

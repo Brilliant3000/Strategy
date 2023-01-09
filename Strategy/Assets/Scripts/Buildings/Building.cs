@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-    public int cost = 20;
+    public int costInCoins = 20;
+    public int costInWood = 20;
+    public int costInStone = 20;
+
+    public int timeBuilding;
+    public int timeDestroy;
 
     [Header("Parameters")] 
     public Vector2Int size;
