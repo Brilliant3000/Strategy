@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Castle
   _icon: {fileID: 0}
+  _id: 0
   _costInCoins: 100
   _costInWood: 0
   _costInStone: 0
   _constructionTime: 0
+  _destroyTime: 0

@@ -14,7 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Market
   _icon: {fileID: 0}
-  _costInCoins: 30
-  _costInWood: 0
-  _costInStone: 0
-  _constructionTime: 0
+  _id: 0
+  _costInCoins_lvl_1: 0
+  _costInWood_lvl_1: 0
+  _costInStone_lvl_1: 0
+  _constructionTime_lvl_1: 0
+  _destroyTime_lvl_1: 0
+  _costInCoins_lvl_2: 0
+  _costInWood_lvl_2: 0
+  _costInStone_lvl_2: 0
+  _constructionTime_lvl_2: 0
+  _destroyTime_lvl_2: 0
+  _costInCoins_lvl_3: 0
+  _costInWood_lvl_3: 0
+  _costInStone_lvl_3: 0
+  _constructionTime_lvl_3: 0
+  _destroyTime_lvl_3: 0

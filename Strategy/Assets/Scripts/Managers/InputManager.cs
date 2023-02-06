@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
@@ -9,17 +10,32 @@ public class InputManager : MonoBehaviour
     {
         buildManager = GetComponent<BuildManager>();
         selectManager = GetComponent<SelectManager>();
-        buildManager.BuildFinished += SetSelect;
+        buildManager.BuildFinished += OnSelectManager;
     }
 
-    public void SetBuilding(Building building)
+    private void Update()
+    {
+        if (Input.GetMouseButtonUp(0) && selectManager.isActiveAndEnabled)
+            selectManager.TrySelectGround();
+    }
+    public void SelectBuilding(BuildingConfig buildingConfig)
+    {
+        OffSelectManager();
+        buildManager.PreparationToBuild(buildingConfig);
+    }
+
+    public void OnSelectManager()
+    {
+        StartCoroutine(Delay());
+    }
+    public void OffSelectManager()
     {
         selectManager.enabled = false;
-        buildManager.StartBuilding(building);
     }
 
-    private void SetSelect()
+    IEnumerator Delay()
     {
+        yield return new WaitForSeconds(0.5f);
         selectManager.enabled = true;
     }
 }

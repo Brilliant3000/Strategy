@@ -1,51 +1,37 @@
-using UnityEngine;
+using System;
 using System.Collections;
+using UnityEngine;
 
 public class Builder : MonoBehaviour
 {
-    [SerializeField] public BuildingProgressBar buildingProgressBar;
+    private BuildingProgressBar buildingProgressBar;
+    private Building building;
+    private Bank bank = Bank.instance;
 
-    public GameObject unfinishedBuilding;
-    private Building building; 
-    private Bank bank;
-    private int buildTime;
-    private Vector3 buildPos;
+    public Action<Builder> OnFinishedBuild;
 
-    private void Start()
+    public void StartBuild(GroundElement ground, BuildingProgressBar progress)
     {
-        bank = GetComponent<Bank>();
-    }
+        building = ground.buildingHolder;
+        buildingProgressBar = progress;
+        ground.buildingHolder.ground = ground;
 
-    public void StartBuilding(Building building, GroundElement ground)
-    {
-        this.building = building;
-
-        buildTime = building.timeBuilding;
-        buildingProgressBar.Active(building, buildTime);
-        StartCoroutine(ColldownBuild());
-   
-        buildPos = new Vector3(ground.transform.position.x,
-                    ground.transform.position.y + 0.5f, ground.transform.position.z);
-
-        unfinishedBuilding.transform.position = buildPos;
+        buildingProgressBar.ActiveBuildMode(building, true);
+        StartCoroutine(DelayBeforeBuild());
         ground.Busy = true;
     }
 
     private void Build()
     {
-        building.transform.position = buildPos; 
         building.gameObject.SetActive(true);
     }
 
-    private void CalculationReurses()
+    IEnumerator DelayBeforeBuild()
     {
-        bank.SubtractCost(building);
-    }
-
-    IEnumerator ColldownBuild()
-    {
-        yield return new WaitForSeconds(buildTime);
+        yield return new WaitForSeconds(building.config.buildingLevels[building.level - 1].constructionTime);
         Build();
-        CalculationReurses();
+        bank.SubtractCost(building.config.buildingLevels[building.level - 1]);
+        OnFinishedBuild?.Invoke(this);
+        Destroy(this);
     }
 }

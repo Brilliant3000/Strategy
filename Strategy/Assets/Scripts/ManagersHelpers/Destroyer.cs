@@ -1,46 +1,42 @@
 
-using UnityEngine;
 using System;
 using System.Collections;
+using UnityEngine;
 
 public class Destroyer : MonoBehaviour
 {
-    private int timeDestroy;
-    private Bank bank;
     private Building building;
-    public Action OnDestroy;
-    public BuildingProgressBar buildingProgressBar;
+    private GroundElement ground;
+    public Action<Destroyer> OnDestroyFinished;
+    private float timeDestroy;
 
-    private void Start()
+    public void StartDestroy(GroundElement ground, BuildingProgressBar progressBar)
     {
-        bank = GetComponent<Bank>();
+        this.ground = ground;
+        building = ground.buildingHolder;
+        timeDestroy = building.config.buildingLevels[building.level - 1].destroyTime;
+        progressBar.ActiveDestroyMode(building, false);
+        StartCoroutine(DelayBeforeDestroy());
     }
 
-    public void StartDestroy(GroundElement ground)
+    private void DestroyBuilding()
     {
-        building = ground.buildingHolder;
-        timeDestroy = building.timeDestroy;
-        buildingProgressBar.Active(building, timeDestroy);
-        StartCoroutine(ColldownDestroy());
+        if (building != null)
+            Destroy(building.gameObject);
         ground.Busy = false;
     }
 
-    public void DestroyBuilding()
+    private void ReturnResursesInBank()
     {
-        if(building != null)
-            Destroy(building.gameObject);
-        OnDestroy?.Invoke();
+        Bank.instance.ReturnResources(building.config.buildingLevels[building.level - 1]);
     }
 
-    private void ReturnResurses()
-    {
-        bank.ReturnResources(building);
-    }
-
-    IEnumerator ColldownDestroy()
+    IEnumerator DelayBeforeDestroy()
     {
         yield return new WaitForSeconds(timeDestroy);
         DestroyBuilding();
-        ReturnResurses();
+        ReturnResursesInBank();
+        OnDestroyFinished?.Invoke(this);
+        Destroy(this);
     }
 }

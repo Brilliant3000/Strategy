@@ -1,3 +1,4 @@
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,35 +7,40 @@ public class BuildingDushboard : MonoBehaviour
     [SerializeField] private Button upgradeButton;
     [SerializeField] private Button destroyButton;
     [SerializeField] private Button getInfoButton;
-    [SerializeField] private Destroyer destroyer;
+
+    [SerializeField] private DistributorOfDestroyers queue;
+    [SerializeField] private UIHub uiHub;
+
     private GroundElement ground;
     private Building building;
 
     private void Start()
     {
+        getInfoButton.onClick.AddListener(Info);
         destroyButton.onClick.AddListener(Destroy);
-        destroyer.OnDestroy += DestroyEnd;
+        upgradeButton.onClick.AddListener(Upgrade);
     }
-    public void SetBuilding(GroundElement ground)
+
+    public void Active(GroundElement ground)
     {
         gameObject.SetActive(true);
-
         this.ground = ground;
         building = ground.buildingHolder;
-
-        if(building != null )
-            transform.position = new Vector3(building.transform.position.x, 
-                building.transform.position.y + 0.8f, building.transform.position.z + 0.5f);
     }
 
+    private void Info()
+    {
+        uiHub.ActiveBuildingInfoPanel(building);
+        gameObject.SetActive(false);
+    }  
     private void Destroy()
     {
-        destroyer.StartDestroy(ground);
-    }
-
-    private void DestroyEnd()
-    {
+        queue.Distribute(ground);
         gameObject.SetActive(false);
     }
-
+    private void Upgrade()
+    {
+        uiHub.ActiveBuildingInfoPanelForUpdate(building);
+        gameObject.SetActive(false);
+    }
 }

@@ -1,36 +1,35 @@
-using UnityEngine;
 using System;
 using Unity.VisualScripting;
+using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
     public Action BuildFinished;
-
-    [SerializeField] private LayerMask layerGround;
     [SerializeField] private BuildDushBoard buildingDushBoard;
 
     private Camera mainCamera;
-
     private Building flyingBuilding;
-    private Collider hitCollider;
-    private GroundElement groundElement;
-    private Builder builder;
-    private Bank bank;
+    private GroundElement ground;
+    private Collider tempGround;
+    private DistributorOfBuildings BuilderQueue;
+    private PlaceVerificator verificator;
+    private BuildingConstructor buildingConstructor;
 
     void Start()
     {
-        mainCamera = Camera.main;    
-        builder = GetComponent<Builder>();
-        bank = GetComponent<Bank>();
+        mainCamera = Camera.main;
+        BuilderQueue = GetComponent<DistributorOfBuildings>();
+        verificator = new PlaceVerificator();
+        buildingConstructor = gameObject.AddComponent<BuildingConstructor>();
     }
 
-    public void StartBuilding(Building buildingPrefab)
+    public void PreparationToBuild(BuildingConfig buildingConfig)
     {
-        if(flyingBuilding != null) 
+        if (flyingBuilding != null)
             Destroy(flyingBuilding.gameObject);
 
-        flyingBuilding = Instantiate(buildingPrefab);
-        buildingDushBoard.SetBuild(flyingBuilding);
+        flyingBuilding = buildingConstructor.GetBuilding(buildingConfig, 0);
+        buildingDushBoard.SetBuild(flyingBuilding); //?
     }
 
     void Update()
@@ -40,69 +39,63 @@ public class BuildManager : MonoBehaviour
             RaycastHit hit;
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit,layerGround))
+            if (Physics.Raycast(ray, out hit))
             {
-                hitCollider = hit.collider;
-                groundElement = hit.collider.GetComponent<GroundElement>();
+                if (hit.collider != tempGround || tempGround == null)
+                {
+                    ground = hit.collider.GetComponent<GroundElement>();
 
-                CheckPlace();
-                Vector3 pos = new Vector3(hit.transform.position.x,
-                hitCollider.transform.position.y + 0.5f, hit.transform.position.z);
+                    CheckPlaceFit();
+                    flyingBuilding.transform.position = new Vector3(hit.transform.position.x,
+                    hit.transform.position.y + 0.5f, hit.transform.position.z);
 
-                flyingBuilding.transform.position = pos;
+                    tempGround = hit.collider;
+                }
             }
         }
     }
 
-    private void CheckPlace()
+    private bool CheckPlaceFit()
     {
-        if(groundElement.Busy == true)
+        bool acces = verificator.StartVeifi(ground, flyingBuilding);
+
+        if (acces)
         {
-            flyingBuilding.SetTransparent(true);
+            flyingBuilding.SetTransparent(false);
+            return true;
         }
         else
         {
-            flyingBuilding.SetTransparent(false);
+            flyingBuilding.SetTransparent(true);
+            return false;
         }
     }
 
     public void TryPlacing()
     {
-        if (groundElement.Busy == false && CheckCost())
+        if (BuilderQueue.BuildingsCount < BuilderQueue.maxBuildings)
         {
-            groundElement.buildingHolder = flyingBuilding;
-            Build();
- 
-        }
-        else if (flyingBuilding != null)
-        {
-            BuildFinished.Invoke();
-            buildingDushBoard.RemoveBuild();
-            Destroy(flyingBuilding.gameObject);
-        }
-    }
-
-    private bool CheckCost()
-    {
-        if(bank.Coin >= flyingBuilding.costInCoins)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
+            if (flyingBuilding != null && CheckPlaceFit())
+            {
+                ground.buildingHolder = flyingBuilding;
+                StartBuild(); //?
+            }
+            else if (flyingBuilding != null)
+            {
+                buildingDushBoard.RemoveBuild(); //?
+                Destroy(flyingBuilding.gameObject);
+            }
+            BuildFinished?.Invoke();
         }
     }
 
-    private void Build()
+    private void StartBuild() //?
     {
-        builder.StartBuilding(flyingBuilding, groundElement);
+        BuilderQueue.Distribute(ground);
         flyingBuilding.SetDefault();
+        buildingDushBoard.RemoveBuild(); //?
 
-        buildingDushBoard.RemoveBuild();
         flyingBuilding.gameObject.SetActive(false);
-
         flyingBuilding = null;
-        BuildFinished?.Invoke();
     }
 }

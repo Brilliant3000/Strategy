@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: House
   m_EditorClassIdentifier: 
   _name: House
-  _icon: {fileID: 0}
-  _costInCoins: 20
-  _costInWood: 0
-  _costInStone: 0
-  _constructionTime: 0
+  _level: 1
+  _id: 0
+  _type: 0
+  _description: The house where can live people
+  _buildingsLevel:
+  - {fileID: 11400000, guid: 6801f6ed2e1eda2468a4e44a994f2c93, type: 2}
+  - {fileID: 11400000, guid: 42fb6d8e0bcb5db4493d12da0d3727e6, type: 2}
+  - {fileID: 11400000, guid: 2e1e5f1896426ed47aac2b378ecb63b7, type: 2}

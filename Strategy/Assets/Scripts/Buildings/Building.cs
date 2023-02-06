@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-    public int costInCoins = 20;
-    public int costInWood = 20;
-    public int costInStone = 20;
+    public BuildingConfig config;
 
-    public int timeBuilding;
-    public int timeDestroy;
+     public int health;
+    [HideInInspector] public int capacity;
+     public int level = 1;
+    [HideInInspector] public TypeBuildings type;
+    [HideInInspector] public GroundElement ground;
 
-    [Header("Parameters")] 
-    public Vector2Int size;
+    [Header("Parameters")]
+    public int rotateAngle;
+
     public MeshRenderer mesh;
     private Color[] colors;
     private float angle = 0;
@@ -26,8 +28,8 @@ public class Building : MonoBehaviour
     {
         if (available)
         {
-            for(int i = 0; i < mesh.materials.Length;i++)
-                mesh.materials[i].color = new Color(1,0,0,0.3f);
+            for (int i = 0; i < mesh.materials.Length; i++)
+                mesh.materials[i].color = new Color(1, 0, 0, 0.3f);
         }
         else
         {
@@ -44,25 +46,12 @@ public class Building : MonoBehaviour
 
     public void RotateRight()
     {
-        angle -= 90;
+        angle -= rotateAngle;
         transform.localEulerAngles = new Vector3(0, angle, 0);
     }
     public void RotateLeft()
     {
-        angle += 90;
-        transform.localEulerAngles = new Vector3(0,angle,0);
-    }
-
-    public void OnDrawGizmos()
-    {
-        for(int x = 0; x < size.x;x++)
-        {
-            for (int y = 0; y < size.y; y++)
-            {
-                if((x+y) % 2 == 0) Gizmos.color = new Color(0f, 1f, 0f, 0.3f);
-                else Gizmos.color = new Color(1f,0f,0f,0.3f);
-                Gizmos.DrawCube(transform.position + new Vector3(x,0,y), new Vector3(1, 0.1f, 1));
-            }
-        }
+        angle += rotateAngle;
+        transform.localEulerAngles = new Vector3(0, angle, 0);
     }
 }

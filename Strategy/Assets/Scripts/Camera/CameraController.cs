@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -12,17 +10,17 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             touthPos = Camera.main.ScreenToViewportPoint(new Vector3(Input.mousePosition.x, transform.position.y, transform.position.z));
-        }  
-        
-        if(Input.GetMouseButton(0))
+        }
+
+        if (Input.GetMouseButton(0))
         {
             direction = touthPos - Camera.main.ScreenToViewportPoint(new Vector3(Input.mousePosition.x, transform.position.y, transform.position.z));
 
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, minPosX, maxPosX) + direction.x / 50 * sensivity,
-                transform.position.y, transform.position.z) ;
+                transform.position.y, transform.position.z);
         }
     }
 }

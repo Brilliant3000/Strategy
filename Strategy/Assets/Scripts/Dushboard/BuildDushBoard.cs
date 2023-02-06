@@ -13,8 +13,8 @@ public class BuildDushBoard : MonoBehaviour
     {
         gameObject.SetActive(true);
         this.building = building;
-        rotateLeft.onClick.AddListener(building.RotateLeft);  
-        
+        rotateLeft.onClick.AddListener(building.RotateLeft);
+
         rotateRight.onClick.AddListener(building.RotateRight);
 
         apply.onClick.AddListener(buildManager.TryPlacing);
@@ -34,9 +34,9 @@ public class BuildDushBoard : MonoBehaviour
 
     private void Update()
     {
-        if(building != null)
+        if (building != null)
         {
-            transform.position = new Vector3(building.transform.position.x, 
+            transform.position = new Vector3(building.transform.position.x,
                 building.transform.position.y + 0.15f, building.transform.position.z);
         }
     }

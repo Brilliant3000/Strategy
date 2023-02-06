@@ -48,9 +48,9 @@ MonoBehaviour:
   costInCoins: 50
   costInWood: 20
   costInStone: 20
-  timeBuilding: 5
-  timeDestroy: 5
-  size: {x: 1, y: 1}
+  timeBuilding: 2
+  timeDestroy: 1
+  rotateAngle: 45
   mesh: {fileID: 2267705167282580329}
 --- !u!1 &8663865576137762188
 GameObject:
