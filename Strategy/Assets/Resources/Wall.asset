@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ce191427ee938468220635c8e05192, type: 3}
+  m_Name: Wall
+  m_EditorClassIdentifier: 
+  _name: Wall
+  _level: 1
+  _id: 3
+  _type: 0
+  _description: Hight wall!
+  _buildingsLevel:
+  - {fileID: 11400000, guid: 0bef333fabc2a104b960086586ffc328, type: 2}
+  - {fileID: 11400000, guid: 868f7dc71344e7d4b9561d4c925e467a, type: 2}
+  - {fileID: 11400000, guid: e535107bdd4020f48a167f2c231a3459, type: 2}

@@ -9,6 +9,7 @@ public class BuildingConfig : ScriptableObject
     [SerializeField] private int _id;
     [SerializeField] private TypeBuildings _type;
     [SerializeField] private string _description;
+    [SerializeField] private bool _abilityDestroy = true;
 
     [SerializeField] private BuildingLevelInfo[] _buildingsLevel;
 
@@ -17,5 +18,6 @@ public class BuildingConfig : ScriptableObject
     public int level => _level;
     public int id => _id;
     public string description => _description;
+    public bool abilityDestroy => _abilityDestroy;
     public BuildingLevelInfo[] buildingLevels => _buildingsLevel;
 }

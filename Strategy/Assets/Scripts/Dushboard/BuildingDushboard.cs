@@ -1,46 +1,80 @@
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BuildingDushboard : MonoBehaviour
 {
-    [SerializeField] private Button upgradeButton;
-    [SerializeField] private Button destroyButton;
-    [SerializeField] private Button getInfoButton;
+    [SerializeField] private Button _upgradeButton;
+    [SerializeField] private Button _destroyButton;
+    [SerializeField] private Button _getInfoButton;
 
-    [SerializeField] private DistributorOfDestroyers queue;
-    [SerializeField] private UIHub uiHub;
+    [SerializeField] private DistributorOfDestroyers _distributor;
+    [SerializeField] private UIHub _uiHub;
 
-    private GroundElement ground;
-    private Building building;
+    [SerializeField] private BuildingLabel _buildingLabel;
+    private GroundElement _ground;
+    private Building _building;
 
     private void Start()
     {
-        getInfoButton.onClick.AddListener(Info);
-        destroyButton.onClick.AddListener(Destroy);
-        upgradeButton.onClick.AddListener(Upgrade);
+        _getInfoButton.onClick.AddListener(Info);
+        _destroyButton.onClick.AddListener(Destroy);
+        _upgradeButton.onClick.AddListener(Upgrade);
+        _buildingLabel = Instantiate(_buildingLabel.gameObject).GetComponent<BuildingLabel>();
     }
 
     public void Active(GroundElement ground)
     {
+        _ground = ground;
+        _building = ground.buildingHolder;
+        Setup();
+        _buildingLabel.SetValues(_ground.buildingHolder);
+        _buildingLabel.gameObject.SetActive(true);
         gameObject.SetActive(true);
-        this.ground = ground;
-        building = ground.buildingHolder;
+    }
+    private void Setup()
+    {
+        _getInfoButton.gameObject.SetActive(true);
+
+        if (_building.config.abilityDestroy == true)
+        {
+            _destroyButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            _destroyButton.gameObject.SetActive(false);
+        }  
+        if (_building.config.buildingLevels.Length > 1)
+        {
+            _upgradeButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            _upgradeButton.gameObject.SetActive(false);
+        }
     }
 
     private void Info()
     {
-        uiHub.ActiveBuildingInfoPanel(building);
-        gameObject.SetActive(false);
+        _uiHub.ActiveBuildingInfoPanel(_building);
+        Deactivate();
     }  
     private void Destroy()
     {
-        queue.Distribute(ground);
-        gameObject.SetActive(false);
+        _distributor.Distribute(_ground);
+        Deactivate();
     }
     private void Upgrade()
     {
-        uiHub.ActiveBuildingInfoPanelForUpdate(building);
+        _uiHub.ActiveBuildingInfoPanelForUpdate(_building);
+        Deactivate();
+    }
+
+    public void Deactivate()
+    {
         gameObject.SetActive(false);
+        _buildingLabel.gameObject.SetActive(false);
+        _getInfoButton.gameObject.SetActive(false);
+        _destroyButton.gameObject.SetActive(false);
+        _upgradeButton.gameObject.SetActive(false);
     }
 }

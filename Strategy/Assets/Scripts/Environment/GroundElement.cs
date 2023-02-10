@@ -23,6 +23,7 @@ public class GroundElement : MonoBehaviour
         if (buildingHolder != null)
         {
             busy = true;
+            buildingHolder.ground = this;
         }
         else
         {

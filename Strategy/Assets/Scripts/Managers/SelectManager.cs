@@ -34,13 +34,13 @@ public class SelectManager : MonoBehaviour
                 else
                 {
                     selectDushboard.RemovePosition(); //?
-                    buildingDushboard.gameObject.SetActive(false); //?
+                    buildingDushboard.Deactivate();
                 }
                 tempGround = hit.collider;
             }
             else
             {
-                buildingDushboard.gameObject.SetActive(false); //?
+                buildingDushboard.Deactivate(); 
                 selectDushboard.RemovePosition(); //?
                 tempGround = null;
             }

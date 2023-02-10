@@ -4,9 +4,9 @@ public class Building : MonoBehaviour
 {
     public BuildingConfig config;
 
-     public int health;
+    public int health;
     [HideInInspector] public int capacity;
-     public int level = 1;
+    public int level = 1;
     [HideInInspector] public TypeBuildings type;
     [HideInInspector] public GroundElement ground;
 

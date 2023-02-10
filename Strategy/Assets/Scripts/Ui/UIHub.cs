@@ -8,42 +8,65 @@ public class UIHub : MonoBehaviour
 {
     public Action OnSomePanel;
     public Action OffSomePanel;
-    private InputManager inputManager;
-    private CameraController cameraController;
+    public Action OnPanelWithoutSelectManager;
+    public Action OffPanelWithoutSelectManager;
+
+    private InputManager _inputManager;
+    private CameraController _cameraController;
 
     [Tooltip("1233")]
-    [SerializeField] private GameObject backGroundPanel;
+    [SerializeField] private GameObject _backGroundPanel;
 
-    [SerializeField] private UIBuildingInfo buildingInfoPanel;
+    [SerializeField] private UIBuildingInfo _buildingInfoPanel;
+    [SerializeField] private BuildingShop _buildingShopPanel;
     private void Start()
     {
         OnSomePanel += OnSomeFunctions;
         OffSomePanel += OffSomeFunctions;
-        inputManager = GetComponent<InputManager>();
-        cameraController = FindObjectOfType<CameraController>();
+        OnPanelWithoutSelectManager += OnPanelWithoutInputManager;
+        OffPanelWithoutSelectManager += OffPanelWithoutInputManager;
+        _inputManager = GetComponent<InputManager>();
+        _cameraController = FindObjectOfType<CameraController>();
     }
     public void ActiveBuildingInfoPanel(Building building)
     {
-        buildingInfoPanel.ShowInfo(building);
+        _buildingInfoPanel.ShowInfo(building);
         OnSomePanel.Invoke();
     } 
     public void ActiveBuildingInfoPanelForUpdate(Building building)
     {
-        buildingInfoPanel.ShowInfoForUpdate(building);
+        _buildingInfoPanel.ShowInfoForUpdate(building);
+        OnSomePanel.Invoke();
+    }
+
+    public void ActiveBuildingShop()
+    {
+        _buildingShopPanel.gameObject.SetActive(true);
         OnSomePanel.Invoke();
     }
 
     private void OnSomeFunctions()
     {
-        backGroundPanel.SetActive(true);
-        inputManager.OffSelectManager();
-        cameraController.enabled = false;
+        _backGroundPanel.SetActive(true);
+        _inputManager.OffSelectManager();
+        _cameraController.enabled = false;
     }   
+
+    private void OnPanelWithoutInputManager()
+    {
+        _backGroundPanel.SetActive(true);
+        _cameraController.enabled = false;
+    }
+    private void OffPanelWithoutInputManager()
+    {
+        _backGroundPanel.SetActive(false);
+        _cameraController.enabled = true;
+    }
 
     private void OffSomeFunctions()
     {
-        backGroundPanel.SetActive(false);
-        inputManager.OnSelectManager();
-        cameraController.enabled = true;
+        _backGroundPanel.SetActive(false);
+        _inputManager.OnSelectManager();
+        _cameraController.enabled = true;
     }    
 }
