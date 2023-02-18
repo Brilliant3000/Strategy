@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1723592885636081823}
   - component: {fileID: 1079549542257160108}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hex_forest_detail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1723592885636081823
 Transform:
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5e5d094dd045dc479603a1ed2cd75b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingHolder: {fileID: 0}
   accessBuild: 1
 --- !u!1 &7002382549677345532
 GameObject:
@@ -57,12 +58,12 @@ GameObject:
   - component: {fileID: 2277513723884575175}
   - component: {fileID: 3984689470142521485}
   - component: {fileID: 462128959353947161}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2277513723884575175
 Transform:

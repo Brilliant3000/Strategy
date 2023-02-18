@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 7939984605434874688}
   - component: {fileID: 5109143227037266442}
   - component: {fileID: 8629715554128959134}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7939984605434874688
 Transform:
@@ -97,12 +97,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7367970203906947608}
   - component: {fileID: 7856659745762107721}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Market_lvl_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7367970203906947608
 Transform:
@@ -138,5 +138,5 @@ MonoBehaviour:
   level: 1
   type: 0
   ground: {fileID: 0}
-  rotateAngle: 45
   mesh: {fileID: 8629715554128959134}
+  colors: []

@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Wall
   _level: 1
-  _id: 3
+  _id: 7
   _type: 0
   _description: Hight wall!
+  _abilityDestroy: 1
+  _hideInShop: 0
   _buildingsLevel:
   - {fileID: 11400000, guid: 0bef333fabc2a104b960086586ffc328, type: 2}
   - {fileID: 11400000, guid: 868f7dc71344e7d4b9561d4c925e467a, type: 2}

@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 6151495877666186672}
   - component: {fileID: 9045954518385204474}
   - component: {fileID: 5524814576531781742}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6151495877666186672
 Transform:
@@ -93,12 +93,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6714502943239804136}
   - component: {fileID: 4522159678775163849}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: square_water_detail_empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6714502943239804136
 Transform:

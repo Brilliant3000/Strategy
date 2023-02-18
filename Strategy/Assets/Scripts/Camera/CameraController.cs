@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     private Vector3 touthPos;
     private Vector3 direction;
 
-    void Update()
+    void LateUpdate()
     {
         if (Input.GetMouseButtonDown(0))
         {

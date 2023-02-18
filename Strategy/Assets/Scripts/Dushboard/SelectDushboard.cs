@@ -4,7 +4,7 @@ public class SelectDushboard : MonoBehaviour
 {
     private GroundElement ground;
 
-    public void SetPosition(GroundElement ground)
+    public void Active(GroundElement ground)
     {
         gameObject.SetActive(true);
         this.ground = ground;
@@ -13,7 +13,7 @@ public class SelectDushboard : MonoBehaviour
         ground.transform.position.y + 0.55f, ground.transform.position.z);
     }
 
-    public void RemovePosition()
+    public void Deactive()
     {
         ground = null;
         gameObject.SetActive(false);

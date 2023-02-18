@@ -17,5 +17,7 @@ MonoBehaviour:
   _id: 12
   _type: 0
   _description: This are trees and stones
+  _abilityDestroy: 1
+  _hideInShop: 1
   _buildingsLevel:
   - {fileID: 11400000, guid: 41693a54836eea34fb63dce4eff267ca, type: 2}

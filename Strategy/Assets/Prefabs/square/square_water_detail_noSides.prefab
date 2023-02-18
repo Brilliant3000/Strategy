@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 8908845542090843441}
   - component: {fileID: 6013920193817320571}
   - component: {fileID: 7084169551983982831}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8908845542090843441
 Transform:
@@ -95,12 +95,12 @@ GameObject:
   - component: {fileID: 8345917654777238633}
   - component: {fileID: 3893400279994228947}
   - component: {fileID: -4606264830151858726}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: square_water_detail_noSides
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8345917654777238633
 Transform:
@@ -130,7 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5e5d094dd045dc479603a1ed2cd75b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accessBuild: 0
+  buildingHolder: {fileID: 0}
+  accessBuild: 1
 --- !u!65 &-4606264830151858726
 BoxCollider:
   m_ObjectHideFlags: 0

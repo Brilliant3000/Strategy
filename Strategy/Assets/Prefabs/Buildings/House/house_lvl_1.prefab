@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 7676275110160909347}
   - component: {fileID: 4778518038413737321}
   - component: {fileID: 8319572343052655101}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7676275110160909347
 Transform:
@@ -97,12 +97,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7131361741750760827}
   - component: {fileID: 2391807026034618276}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: house_lvl_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7131361741750760827
 Transform:
@@ -134,7 +134,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 5fc5e4f254959bd4a98a937fb1c32c25, type: 2}
   health: 0
+  capacity: 0
   level: 0
-  rotateAngle: 45
   type: 0
+  ground: {fileID: 0}
   mesh: {fileID: 8319572343052655101}
+  colors: []

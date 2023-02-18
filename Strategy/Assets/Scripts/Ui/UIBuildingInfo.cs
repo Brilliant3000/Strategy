@@ -94,9 +94,9 @@ public class UIBuildingInfo : MonoBehaviour
     }
     private void ShowCapacityBar()
     {
-        _capacityText.text = $"Capacity: {_building.capacity} / {_buildingLevelInfo.capacity}";
+        _capacityText.text = $"Capacity: {_building.resourceCount} / {_buildingLevelInfo.capacity}";
         _capacitySlider.maxValue = _buildingLevelInfo.capacity;
-        _capacitySlider.value = _building.capacity;
+        _capacitySlider.value = _building.resourceCount;
         _capacitySlider.gameObject.SetActive(true);
     }
 

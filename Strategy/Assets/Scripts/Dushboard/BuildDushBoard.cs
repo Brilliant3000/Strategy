@@ -1,43 +1,45 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuildDushBoard : MonoBehaviour
+public class BuildDushBoard : SignBaseUI
 {
-    [SerializeField] private BuildManager buildManager;
-    [SerializeField] private Button rotateLeft;
-    [SerializeField] private Button rotateRight;
-    [SerializeField] private Button apply;
-    private Building building;
+    [SerializeField] private BuildManager _buildManager;
+    [SerializeField] private Button _rotateLeft;
+    [SerializeField] private Button _rotateRight;
+    [SerializeField] private Button _apply;
+    [SerializeField] private Button _cancel;
+    [SerializeField] private float _size;
+    private Building _building;
 
-    public void SetBuild(Building building)
+    private void Start()
     {
+        _rotateLeft.onClick.AddListener(_buildManager.RotateLeft);
+        _apply.onClick.AddListener(_buildManager.TryPlacing);
+        _cancel.onClick.AddListener(_buildManager.CancelBuild);
+        _rotateRight.onClick.AddListener(_buildManager.RotateRight);
+        FindOptimalSize(_size);
+        FindOptimalAngle();
+    }
+    public void Active(Building building)
+    {
+        _building = building;
+        FindOptimalAngle();
         gameObject.SetActive(true);
-        this.building = building;
-        rotateLeft.onClick.AddListener(building.RotateLeft);
-
-        rotateRight.onClick.AddListener(building.RotateRight);
-
-        apply.onClick.AddListener(buildManager.TryPlacing);
     }
 
-    public void RemoveBuild()
+    public void Unactive()
     {
-        rotateLeft.onClick.RemoveAllListeners();
-
-        rotateRight.onClick.RemoveAllListeners();
-
-        apply.onClick.RemoveAllListeners();
-        building = null;
+        _building = null;
         gameObject.SetActive(false);
-
     }
 
     private void Update()
     {
-        if (building != null)
+        if (_building != null)
         {
-            transform.position = new Vector3(building.transform.position.x,
-                building.transform.position.y + 0.15f, building.transform.position.z);
+            FindOptimalSize(_size);
+            transform.position = new Vector3(_building.transform.position.x,
+                _building.transform.position.y + 0.5f, _building.transform.position.z + 0.5f);
         }
     }
 

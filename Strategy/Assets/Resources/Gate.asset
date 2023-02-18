@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Gate
   _level: 1
-  _id: 4
+  _id: 11
   _type: 0
   _description: Solid gate
+  _abilityDestroy: 1
+  _hideInShop: 0
   _buildingsLevel:
   - {fileID: 11400000, guid: 28005914cf7e08040b455129bc1369d9, type: 2}
   - {fileID: 11400000, guid: 5bed5c2af4dcf074387f92ecf6597bfd, type: 2}

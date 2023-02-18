@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class SelectManager : MonoBehaviour
 {
-    [SerializeField] private SelectDushboard selectDushboard; //?
-    [SerializeField] private BuildingDushboard buildingDushboard; //?
+    [SerializeField] private SelectDushboard selectDushboard;
+    [SerializeField] private BuildingDushboard buildingDushboard; 
 
     private Camera mainCamera;
     private GroundElement ground;
@@ -25,7 +25,7 @@ public class SelectManager : MonoBehaviour
             if (hit.collider != tempGround || tempGround == null)
             {
                 ground = hit.collider.GetComponent<GroundElement>();
-                selectDushboard.SetPosition(ground); //?
+                selectDushboard.Active(ground); 
 
                 if (ground.buildingHolder != null)
                 {
@@ -33,7 +33,7 @@ public class SelectManager : MonoBehaviour
                 }
                 else
                 {
-                    selectDushboard.RemovePosition(); //?
+                    selectDushboard.Deactive(); 
                     buildingDushboard.Deactivate();
                 }
                 tempGround = hit.collider;
@@ -41,10 +41,14 @@ public class SelectManager : MonoBehaviour
             else
             {
                 buildingDushboard.Deactivate(); 
-                selectDushboard.RemovePosition(); //?
+                selectDushboard.Deactive(); 
                 tempGround = null;
             }
         }
+    }
+    public void Deselect()
+    {
+        buildingDushboard.Deactivate();
     }
 
     private void GetBuilding()

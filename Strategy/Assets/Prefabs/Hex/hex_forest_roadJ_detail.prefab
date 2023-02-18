@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 5490512377289941308}
   - component: {fileID: 7270244345845028982}
   - component: {fileID: 6179117460436925666}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5490512377289941308
 Transform:
@@ -95,12 +95,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4918497971400446052}
   - component: {fileID: 1053195500892386211}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hex_forest_roadJ_detail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4918497971400446052
 Transform:
@@ -130,4 +130,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5e5d094dd045dc479603a1ed2cd75b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingHolder: {fileID: 0}
   accessBuild: 0

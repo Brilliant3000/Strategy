@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 6976342664876753933}
   - component: {fileID: 5190361107025608007}
   - component: {fileID: 8728653154991774163}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6976342664876753933
 Transform:
@@ -96,12 +96,12 @@ GameObject:
   - component: {fileID: 2014286699544575209}
   - component: {fileID: 7973130831685026927}
   - component: {fileID: 4646317049165145839}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1600821968914753074
 Transform:
@@ -146,7 +146,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2653651044934150266, guid: 16f7b324f45e93a43afe302a942dd566, type: 3}
+  - {fileID: 2100000, guid: b7cf6c4815566a24d8697e6fb8acc4be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -193,12 +193,12 @@ GameObject:
   - component: {fileID: 5236339712515978851}
   - component: {fileID: 2302613443099825494}
   - component: {fileID: 1874335208230530813}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5894412572771903843
 Transform:
@@ -243,7 +243,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2653651044934150266, guid: 16f7b324f45e93a43afe302a942dd566, type: 3}
+  - {fileID: 2100000, guid: b7cf6c4815566a24d8697e6fb8acc4be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -288,12 +288,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7539244045213414741}
   - component: {fileID: 8010355618397564468}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gate_lvl_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7539244045213414741
 Transform:
@@ -331,5 +331,4 @@ MonoBehaviour:
   level: 1
   type: 0
   ground: {fileID: 0}
-  rotateAngle: 45
-  mesh: {fileID: 8728653154991774163}
+  colors: []

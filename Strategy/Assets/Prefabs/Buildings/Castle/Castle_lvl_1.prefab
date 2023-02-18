@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1079210907784841199}
   - component: {fileID: 680212762033532598}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Castle_lvl_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1079210907784841199
 Transform:
@@ -51,8 +51,8 @@ MonoBehaviour:
   level: 1
   type: 0
   ground: {fileID: 0}
-  rotateAngle: 45
   mesh: {fileID: 2267705167282580329}
+  colors: []
 --- !u!1 &8663865576137762188
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,12 +64,12 @@ GameObject:
   - component: {fileID: 471211827006748343}
   - component: {fileID: 3340892420447473661}
   - component: {fileID: 2267705167282580329}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &471211827006748343
 Transform:

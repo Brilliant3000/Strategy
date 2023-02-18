@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ce191427ee938468220635c8e05192, type: 3}
+  m_Name: Bridge
+  m_EditorClassIdentifier: 
+  _name: Bridge
+  _level: 1
+  _id: 6
+  _type: 2
+  _description: 
+  _abilityDestroy: 1
+  _hideInShop: 0
+  _buildingsLevel:
+  - {fileID: 11400000, guid: 610adb787ce372b4abce578c0d7ec7ce, type: 2}
+  - {fileID: 11400000, guid: 61e9d9505e29c8241895859f7f702f2f, type: 2}
+  - {fileID: 11400000, guid: cdd5a34e462aeba49a6eaa0c02774d51, type: 2}

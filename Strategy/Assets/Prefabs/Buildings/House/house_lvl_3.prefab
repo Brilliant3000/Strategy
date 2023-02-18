@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 7676275110160909347}
   - component: {fileID: 4778518038413737321}
   - component: {fileID: 8319572343052655101}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7676275110160909347
 Transform:
@@ -64,7 +64,7 @@ MeshRenderer:
   - {fileID: 7575915981058242857, guid: 4617469aecc30584e996a8e6df56af60, type: 3}
   - {fileID: 963798294112862009, guid: 4617469aecc30584e996a8e6df56af60, type: 3}
   - {fileID: -8848810374240701247, guid: 4617469aecc30584e996a8e6df56af60, type: 3}
-  - {fileID: -2653651044934150266, guid: bbdd9decd53403a4c8d635e6c7568f83, type: 3}
+  - {fileID: 2100000, guid: b7cf6c4815566a24d8697e6fb8acc4be, type: 2}
   - {fileID: -2867747967464863736, guid: 4617469aecc30584e996a8e6df56af60, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -97,12 +97,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7131361741750760827}
   - component: {fileID: 2391807026034618276}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: house_lvl_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7131361741750760827
 Transform:
@@ -138,5 +138,5 @@ MonoBehaviour:
   level: 0
   type: 0
   ground: {fileID: 0}
-  rotateAngle: 45
   mesh: {fileID: 8319572343052655101}
+  colors: []

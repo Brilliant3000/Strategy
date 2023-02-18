@@ -1,55 +1,63 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BuildManager : MonoBehaviour
 {
     public Action BuildFinished;
-    [SerializeField] private BuildDushBoard buildingDushBoard;
+    [SerializeField] private BuildDushBoard _buildDushBoard;
+    [SerializeField] private Color _accesBuildColor;
+    [SerializeField] private Color _unaccesBuildColor;
+    public int rotateAngle;
+    private float _angle = 0;
 
-    private Camera mainCamera;
-    private Building flyingBuilding;
-    private GroundElement ground;
-    private Collider tempGround;
-    private DistributorOfBuildings BuilderQueue;
-    private PlaceVerificator verificator;
-    private BuildingConstructor buildingConstructor;
+    private Camera _mainCamera;
+    private Building _flyingBuilding;
+    private GroundElement _ground;
+    private Collider _tempGround;
+    private DistributorOfBuildings _BuilderDistributor;
+    private PlaceVerificator _verificator;
+    private BuildingConstructor _buildingConstructor;
+    private MeshRenderer _meshFyingBuilding;
+    private bool _buildingPermit = true;
 
     void Start()
     {
-        mainCamera = Camera.main;
-        BuilderQueue = GetComponent<DistributorOfBuildings>();
-        verificator = new PlaceVerificator();
-        buildingConstructor = gameObject.AddComponent<BuildingConstructor>();
+        _mainCamera = Camera.main;
+        _BuilderDistributor = GetComponent<DistributorOfBuildings>();
+        _verificator = new PlaceVerificator();
+        _buildingConstructor = gameObject.AddComponent<BuildingConstructor>();
     }
 
     public void PreparationToBuild(BuildingConfig buildingConfig)
     {
-        if (flyingBuilding != null)
-            Destroy(flyingBuilding.gameObject);
+        if (_flyingBuilding != null)
+            Destroy(_flyingBuilding.gameObject);
 
-        flyingBuilding = buildingConstructor.GetBuilding(buildingConfig, 0);
-        buildingDushBoard.SetBuild(flyingBuilding); //?
+        _flyingBuilding = _buildingConstructor.GetBuilding(buildingConfig, 0);
+        _buildDushBoard.Active(_flyingBuilding);
+        _meshFyingBuilding = _flyingBuilding.Mesh;
     }
 
     void Update()
     {
-        if (flyingBuilding != null)
+        if (_flyingBuilding != null && _buildingPermit)
         {
             RaycastHit hit;
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider != tempGround || tempGround == null)
+                if (hit.collider != _tempGround || _tempGround == null)
                 {
-                    ground = hit.collider.GetComponent<GroundElement>();
+                    _ground = hit.collider.GetComponent<GroundElement>();
 
                     CheckPlaceFit();
-                    flyingBuilding.transform.position = new Vector3(hit.transform.position.x,
+                    _flyingBuilding.transform.position = new Vector3(hit.transform.position.x,
                     hit.transform.position.y + 0.5f, hit.transform.position.z);
 
-                    tempGround = hit.collider;
+                    _tempGround = hit.collider;
                 }
             }
         }
@@ -57,45 +65,91 @@ public class BuildManager : MonoBehaviour
 
     private bool CheckPlaceFit()
     {
-        bool acces = verificator.StartVeifi(ground, flyingBuilding);
+        bool acces = _verificator.StartVeifi(_ground, _flyingBuilding);
 
         if (acces)
         {
-            flyingBuilding.SetTransparent(false);
+            SetTransparent(false);
             return true;
         }
         else
         {
-            flyingBuilding.SetTransparent(true);
+            SetTransparent(true);
             return false;
         }
     }
 
     public void TryPlacing()
     {
-        if (BuilderQueue.BuildingsCount < BuilderQueue.maxBuildings)
+        if (_BuilderDistributor.BuildingsCount < _BuilderDistributor.maxBuildings)
         {
-            if (flyingBuilding != null && CheckPlaceFit())
+            if (_flyingBuilding != null && CheckPlaceFit())
             {
-                ground.buildingHolder = flyingBuilding;
-                StartBuild(); //?
+                _buildingPermit = false;
+                _ground.buildingHolder = _flyingBuilding;
+                StartBuild();
             }
-            else if (flyingBuilding != null)
+            else if (_flyingBuilding != null)
             {
-                buildingDushBoard.RemoveBuild(); //?
-                Destroy(flyingBuilding.gameObject);
+                _buildDushBoard.Unactive();
+                Destroy(_flyingBuilding.gameObject);
             }
+            _buildingPermit = true;
             BuildFinished?.Invoke();
         }
     }
 
-    private void StartBuild() //?
+    private void StartBuild() 
     {
-        BuilderQueue.Distribute(ground);
-        flyingBuilding.SetDefault();
-        buildingDushBoard.RemoveBuild(); //?
+        _angle = 0;
+        _BuilderDistributor.Distribute(_ground);
+        SetDefaultTransparent();
+        _buildDushBoard.Unactive(); 
 
-        flyingBuilding.gameObject.SetActive(false);
-        flyingBuilding = null;
+        _flyingBuilding.gameObject.SetActive(false);
+        _flyingBuilding = null;
+    }
+
+    private void SetTransparent(bool available)
+    {
+        if (available)
+        {
+            for (int i = 0; i < _meshFyingBuilding.materials.Length; i++)
+                _meshFyingBuilding.materials[i].color = _unaccesBuildColor;
+        }
+        else
+        {
+            for (int i = 0; i < _meshFyingBuilding.materials.Length; i++)
+                _meshFyingBuilding.materials[i].color = _accesBuildColor;
+        }
+    }
+
+    public void SetDefaultTransparent()
+    {
+        for (int i = 0; i < _meshFyingBuilding.materials.Length; i++)
+            _meshFyingBuilding.materials[i].color = _flyingBuilding.colors[i];
+    }
+
+    public void CancelBuild()
+    {
+        _buildingPermit = false;
+        _buildDushBoard.Unactive();
+        Destroy(_flyingBuilding.gameObject);
+        _buildingPermit = true;
+    }
+
+    public void RotateRight()
+    {
+        _buildingPermit = false;
+        _angle -= rotateAngle;
+        _flyingBuilding.transform.localEulerAngles = new Vector3(0, _angle, 0);
+        _buildingPermit = true;
+    }
+    public void RotateLeft()
+    {
+        _buildingPermit = false;
+        _angle += rotateAngle;
+        _flyingBuilding.transform.localEulerAngles = new Vector3(0, _angle, 0);
+        _buildingPermit = true;
     }
 }

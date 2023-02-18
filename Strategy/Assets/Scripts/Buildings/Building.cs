@@ -5,53 +5,25 @@ public class Building : MonoBehaviour
     public BuildingConfig config;
 
     public int health;
-    [HideInInspector] public int capacity;
+    public int resourceCount;
     public int level = 1;
     [HideInInspector] public TypeBuildings type;
     [HideInInspector] public GroundElement ground;
 
-    [Header("Parameters")]
-    public int rotateAngle;
+    public MeshRenderer Mesh { get; private set; }
+    [HideInInspector] public Color[] colors;
 
-    public MeshRenderer mesh;
-    private Color[] colors;
-    private float angle = 0;
-
-    private void Start()
+    private void Awake()
     {
-        colors = new Color[mesh.materials.Length];
+        Mesh = GetComponentInChildren<MeshRenderer>();
+        colors = new Color[Mesh.materials.Length];
 
-        for (int i = 0; i < mesh.materials.Length; i++)
-            colors[i] = mesh.materials[i].color;
-    }
-    public void SetTransparent(bool available)
-    {
-        if (available)
-        {
-            for (int i = 0; i < mesh.materials.Length; i++)
-                mesh.materials[i].color = new Color(1, 0, 0, 0.3f);
-        }
-        else
-        {
-            for (int i = 0; i < mesh.materials.Length; i++)
-                mesh.materials[i].color = new Color(0, 1, 0, 0.3f);
-        }
+        for (int i = 0; i < Mesh.materials.Length; i++)
+            colors[i] = Mesh.materials[i].color;
     }
 
-    public void SetDefault()
+    private void OnDestroy()
     {
-        for (int i = 0; i < mesh.materials.Length; i++)
-            mesh.materials[i].color = colors[i];
-    }
-
-    public void RotateRight()
-    {
-        angle -= rotateAngle;
-        transform.localEulerAngles = new Vector3(0, angle, 0);
-    }
-    public void RotateLeft()
-    {
-        angle += rotateAngle;
-        transform.localEulerAngles = new Vector3(0, angle, 0);
+        BuildingsCounter.instance.listBuildings.Remove(this);
     }
 }

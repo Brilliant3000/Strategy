@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3237816573685305636}
   - component: {fileID: 359527400628769795}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: hex_forest_waterD_detail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3237816573685305636
 Transform:
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5e5d094dd045dc479603a1ed2cd75b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingHolder: {fileID: 0}
   accessBuild: 0
 --- !u!1 &6496744038730937159
 GameObject:
@@ -57,12 +58,12 @@ GameObject:
   - component: {fileID: 2638895210224918652}
   - component: {fileID: 884977573519268150}
   - component: {fileID: 4426379049277767074}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2638895210224918652
 Transform:

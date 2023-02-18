@@ -24,7 +24,9 @@ public class BuildingShop : MonoBehaviour
     {
         SortCards();
         foreach (BuildingConfig config in _buildingsConfig) 
-        { 
+        {
+            if (config.hideInShop == true) continue;
+
             BuildingShopItem item = Instantiate(_item, _scrollRect.content.transform);
             item.SetValues(config);
             item.shopCardButton.onClick.AddListener(HidePanel);

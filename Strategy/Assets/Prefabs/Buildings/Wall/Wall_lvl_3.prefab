@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 8655053662641743886}
   - component: {fileID: 5821960452482421060}
   - component: {fileID: 7056709669476464080}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8655053662641743886
 Transform:
@@ -95,12 +95,12 @@ GameObject:
   - component: {fileID: 2521472276164869568}
   - component: {fileID: 7080999902578476311}
   - component: {fileID: 6189370010002938682}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &386331595476145925
 Transform:
@@ -145,7 +145,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2653651044934150266, guid: 16f7b324f45e93a43afe302a942dd566, type: 3}
+  - {fileID: 2100000, guid: b7cf6c4815566a24d8697e6fb8acc4be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -190,12 +190,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8101088705465899350}
   - component: {fileID: 8639698748576904616}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall_lvl_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8101088705465899350
 Transform:
@@ -232,5 +232,5 @@ MonoBehaviour:
   level: 1
   type: 0
   ground: {fileID: 0}
-  rotateAngle: 45
   mesh: {fileID: 7056709669476464080}
+  colors: []

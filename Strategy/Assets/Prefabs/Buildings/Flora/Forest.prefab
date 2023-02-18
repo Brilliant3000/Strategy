@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 27018178859386774}
   - component: {fileID: 564433877238638983}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &27018178859386774
 Transform:
@@ -51,8 +51,8 @@ MonoBehaviour:
   level: 1
   type: 0
   ground: {fileID: 0}
-  rotateAngle: 45
   mesh: {fileID: 1287288061853985552}
+  colors: []
 --- !u!1 &8546116507425793525
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,12 +64,12 @@ GameObject:
   - component: {fileID: 589910877523244750}
   - component: {fileID: 2375903396563210116}
   - component: {fileID: 1287288061853985552}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &589910877523244750
 Transform:

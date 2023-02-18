@@ -2,8 +2,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuildingProgressBar : MonoBehaviour
+public class BuildingProgressBar : SignBaseUI
 {
+    public float size;
     [SerializeField] private TextMeshProUGUI textMeshPro;
     [SerializeField] private Slider slider;
     private float maxTime;
@@ -27,7 +28,8 @@ public class BuildingProgressBar : MonoBehaviour
         }
         transform.position = new Vector3(building.transform.position.x,
             building.transform.position.y + 1f, building.transform.position.z);
-
+        FindOptimalSize(size);
+        FindOptimalAngle();
         gameObject.SetActive(true);
     }
 
@@ -47,7 +49,8 @@ public class BuildingProgressBar : MonoBehaviour
         }
         transform.position = new Vector3(building.transform.position.x,
             building.transform.position.y + 1f, building.transform.position.z);
-
+        FindOptimalSize(size);
+        FindOptimalAngle();
         gameObject.SetActive(true);
     }
 

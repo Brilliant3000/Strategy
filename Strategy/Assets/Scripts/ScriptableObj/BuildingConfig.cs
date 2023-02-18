@@ -5,11 +5,12 @@ using UnityEngine;
 public class BuildingConfig : ScriptableObject
 {
     [SerializeField] private string _name;
-    [SerializeField] private int _level;
+    [SerializeField] private int _level = 1;
     [SerializeField] private int _id;
     [SerializeField] private TypeBuildings _type;
     [SerializeField] private string _description;
     [SerializeField] private bool _abilityDestroy = true;
+    [SerializeField] private bool _hideInShop;
 
     [SerializeField] private BuildingLevelInfo[] _buildingsLevel;
 
@@ -19,5 +20,6 @@ public class BuildingConfig : ScriptableObject
     public int id => _id;
     public string description => _description;
     public bool abilityDestroy => _abilityDestroy;
+    public bool hideInShop => _hideInShop;
     public BuildingLevelInfo[] buildingLevels => _buildingsLevel;
 }
